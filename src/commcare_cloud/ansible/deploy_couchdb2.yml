@@ -33,7 +33,10 @@
             - nocreate
             - notifempty
 
+<<<<<<< HEAD
               
+=======
+>>>>>>> demis/master
 - name: Couchdb2 proxy
   hosts: couchdb2_proxy
   become: true
@@ -43,6 +46,7 @@
     - import_tasks: partials/couchdb2_proxy_haproxy.yml
       when: couchdb_use_haproxy|bool  
   tags: proxy 
+<<<<<<< HEAD
 
 - name: deploy keepalived
   hosts: couchdb2_proxy
@@ -53,4 +57,8 @@
   roles:
     - role: keepalived
       when: groups.couchdb2_proxy |length == 2
+=======
+- name: Deploy keepalived  
+  import_playbook: deploy_keepalived.yml
+>>>>>>> demis/master
   tags: proxy

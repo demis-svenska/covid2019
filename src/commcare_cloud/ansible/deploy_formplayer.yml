@@ -4,3 +4,7 @@
   become: true
   roles:
     - {role: formplayer, tags: formplayer}
+<<<<<<< HEAD:src/commcare_cloud/ansible/deploy_formplayer.yml
+=======
+    - {role: newrelic-java, tags: newrelic-java, when: NEW_RELIC_KEY is defined and NEW_RELIC_KEY}
+>>>>>>> demis/master:ansible/deploy_formplayer.yml

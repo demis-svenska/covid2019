@@ -119,9 +119,12 @@ soft_assert_email: commcarehq-ops+soft_asserts@example.com
 daily_deploy_email: null
 check_s3_backups_email: null
 return_path_email: null
+<<<<<<< HEAD
 bug_report_email: commcarehq-support@example.com
 new_domain_email: inquiries@example.com
 exchange_email: exchange@example.com
+=======
+>>>>>>> demis/master
 
 
 ALTERNATE_HOSTS: []
@@ -138,8 +141,14 @@ BANK_ROUTING_NUMBER_ACH: "{{ localsettings_private.BANK_ROUTING_NUMBER_ACH | def
 BANK_ROUTING_NUMBER_WIRE: "{{ localsettings_private.BANK_ROUTING_NUMBER_WIRE | default('')}}"
 BITLY_APIKEY: "{{ localsettings_private.BITLY_APIKEY | default('') }}"
 BITLY_LOGIN: "{{ localsettings_private.BITLY_LOGIN | default('') }}"
+<<<<<<< HEAD
 BITLY_OAUTH_TOKEN: "{{ localsettings_private.BITLY_OAUTH_TOKEN | default('') }}"
 BOOKKEEPER_CONTACT_EMAILS: "{{ localsettings_private.BOOKKEEPER_CONTACT_EMAILS | default(None) }}"
+=======
+BOOKKEEPER_CONTACT_EMAILS: "{{ localsettings_private.BOOKKEEPER_CONTACT_EMAILS | default(None) }}"
+COUCH_MONITORING_PASSWORD: "{{ localsettings_private.COUCH_MONITORING_PASSWORD | default(None) }}"
+COUCH_MONITORING_USERNAME: "{{ localsettings_private.COUCH_MONITORING_USERNAME | default(None) }}"
+>>>>>>> demis/master
 DRIFT_ID: "{{ localsettings_private.DRIFT_ID | default('', true) }}"
 DROPBOX_APP_NAME: 'CommCareHQFiles'
 DROPBOX_KEY: "{{ localsettings_private.DROPBOX_KEY | default(None) }}"
@@ -182,6 +191,10 @@ DATADOG_API_KEY: "{{ secrets.DATADOG_API_KEY | default(None) }}"
 DATADOG_APP_KEY: "{{ secrets.DATADOG_APP_KEY | default(None) }}"
 ECRYPTFS_PASSWORD: "{{ secrets.ECRYPTFS_PASSWORD | default(None) }}"
 KSPLICE_ACTIVATION_KEY: "{{ secrets.KSPLICE_ACTIVATION_KEY | default(None) }}"
+<<<<<<< HEAD
+=======
+NEW_RELIC_KEY: "{{ secrets.NEW_RELIC_KEY | default(None) }}"
+>>>>>>> demis/master
 
 formplayer_sentry_dsn: '{{ secrets.FORMPLAYER_SENTRY_DSN | default(None) }}'
 internal_domain_name: null
@@ -190,6 +203,11 @@ old_s3_blob_db_secret_key: "{{ secrets.OLD_S3_BLOB_DB_SECRET_KEY | default(None)
 postgres_users: "{{ secrets.POSTGRES_USERS | default(None) }}"
 s3_access_key: "{{ secrets.S3_ACCESS_KEY | default(None) }}"
 s3_secret_key: "{{ secrets.S3_SECRET_KEY | default(None) }}"
+<<<<<<< HEAD
+=======
+supervisor_http_password: "{{ secrets.SUPERVISOR_HTTP_PASSWORD | default(None) }}"
+supervisor_http_username: "{{ secrets.SUPERVISOR_HTTP_USERNAME | default(None) }}"
+>>>>>>> demis/master
 # To enable Local ES snapshot override with repository location
 es_local_repo: false
 blobdb_snapshot_bucket: dimagi-{{ deploy_env }}-blobdb-backups
