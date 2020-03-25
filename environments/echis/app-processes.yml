@@ -26,52 +26,52 @@ celery_processes:
       concurrency: 100
       num_workers: 2
     case_import_queue:
-      concurrency: 10
+      concurrency: 5
     celery:
-      concurrency: 10
+      concurrency: 5
     background_queue:
-      concurrency: 10
+      concurrency: 5
     case_rule_queue:
-      concurrency: 10
+      concurrency: 5
     analytics_queue:
       pooling: gevent
-      concurrency: 10
+      concurrency: 5
     celery_periodic:
-      concurrency: 10
+      concurrency: 5
     saved_exports_queue:
-      concurrency: 10
+      concurrency: 5
       optimize: True
     submission_reprocessing_queue:
-      concurrency: 10
+      concurrency: 5
     reminder_case_update_queue:
       pooling: gevent
-      concurrency: 10
+      concurrency: 5
     reminder_queue:
       pooling: gevent
-      concurrency: 10
+      concurrency: 5
     reminder_rule_queue:
-      concurrency: 10
+      concurrency: 5
     ucr_queue:
-      concurrency: 10
+      concurrency: 5
     ucr_indicator_queue:
-      concurrency: 10
+      concurrency: 5
     sms_queue:
       pooling: gevent
       concurrency: 1
     async_restore_queue:
-      concurrency: 10
+      concurrency: 5
     repeat_record_queue:
       pooling: gevent
-      concurrency: 10
+      concurrency: 5
     logistics_reminder_queue:
       concurrency: 2
     logistics_background_queue:
       concurrency: 2
     send_report_throttled:
-      concurrency: 50
+      concurrency: 5
     sumologic_logs_queue:
       pooling: gevent
-      concurrency: 50
+      concurrency: 5
 
 pillows:
   echis_server7:
