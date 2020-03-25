@@ -33,6 +33,7 @@
             - nocreate
             - notifempty
 
+              
 - name: Couchdb2 proxy
   hosts: couchdb2_proxy
   become: true

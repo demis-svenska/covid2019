@@ -21,7 +21,6 @@ celery_processes:
     flower: {}
     export_download_queue:
       concurrency: 100
-      num_workers: 2
     email_queue:
       pooling: gevent
       concurrency: 100

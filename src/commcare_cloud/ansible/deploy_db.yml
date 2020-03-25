@@ -28,12 +28,6 @@
   roles:
     - {role: elasticsearch, tags: 'elasticsearch'}
 
-- name: Redis Monitoring
-  hosts: redis
-  become: true
-  roles:
-    - redis_monitoring
-
 - import_playbook: deploy_rabbitmq.yml
   tags:
     - rabbitmq

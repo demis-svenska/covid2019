@@ -6,8 +6,8 @@ s3_blob_db_url: "http://172.19.4.43:9000"
 s3_blob_db_s3_bucket: 'echis'
 s3_bulk_delete_chunksize: 200
 
-DATADOG_ENABLED: True
-DATADOG_INTEGRATIONS_ENABLED: True
+DATADOG_ENABLED: False
+DATADOG_INTEGRATIONS_ENABLED: False
 
 elasticsearch_endpoint: '{{ groups.elasticsearch.0 }}'
 elasticsearch_memory: '8192m'
@@ -94,16 +94,16 @@ localsettings:
   REDIS_PORT: '6379'
   REMINDERS_QUEUE_ENABLED: True
   SMS_QUEUE_ENABLED: True
-  cchq_bug_report_email: echismoh@moh.gov.et
-  #timezone: Africa/Addis_Ababa
+  #bug_report_email: echismoh@moh.gov.et
   STATIC_ROOT:
   WS4REDIS_CONNECTION_HOST: "{{ groups.redis.0 }}"
   ENABLE_PRELOGIN_SITE: False
   ENTERPRISE_MODE: True
   RESTRICT_DOMAIN_CREATION: True
   minio_server_datadirs:
-    - /usr/local/share/minio
-  minio_server_cluster_nodes: "{{ groups['minio']|map('string_prefix', '/usr/local/share/minio')|map('string_postfix', 'http://')|list }}"
+   - /usr/local/share/minio
+  minio_server_cluster_nodes: "{{ ['http://'] | product(groups['minio']) | map('join', '') | product(['/usr/local/share/minio']) | map('join', '') | list }}"
+  #minio_server_cluster_nodes: "{{ groups['minio']|map('string_prefix', '/usr/local/share/minio')|map('string_postfix', 'http://')|list }}"
   STATIC_TOGGLE_STATES:
     mobile_ucr_linked_domain:
       always_enabled:
