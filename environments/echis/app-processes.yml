@@ -20,15 +20,15 @@ celery_processes:
     beat: {}
     flower: {}
     export_download_queue:
-      concurrency: 100
+      concurrency: 20
     email_queue:
       pooling: gevent
-      concurrency: 100
+      concurrency: 20
       num_workers: 2
     case_import_queue:
       concurrency: 5
     celery:
-      concurrency: 5
+      concurrency: 25
     background_queue:
       concurrency: 5
     case_rule_queue:
