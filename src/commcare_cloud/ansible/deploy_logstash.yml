@@ -9,8 +9,8 @@
   tasks:
     - include_role:
         name: geerlingguy.filebeat
-    - import_role:
-        name: dimagi.commcare_logstash.filebeat
+        #   - import_role:
+            #     name: dimagi.commcare_logstash.filebeat
   tags: filebeat
 
 - name: Logstash
@@ -30,8 +30,8 @@
   tasks:
     - include_role:
         name: sansible.logstash
-    - import_role: 
-        name: dimagi.commcare_logstash.logstash
+        #- import_role: 
+      #    name: dimagi.commcare_logstash.logstash
     - sysctl:
         name: net.core.rmem_max
         value: '26214400'
