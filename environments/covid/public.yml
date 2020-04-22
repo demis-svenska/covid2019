@@ -1,0 +1,103 @@
+internal_domain_name: moh.gov.et
+
+#localsettings.BLOB_DB_MIGRATING_FROM_FS_TO_S3: True
+s3_blob_db_enabled: yes
+s3_blob_db_url: "http://172.31.92.77:9000"
+s3_blob_db_s3_bucket: 'covid'
+s3_bulk_delete_chunksize: 200
+
+DATADOG_ENABLED: False
+DATADOG_INTEGRATIONS_ENABLED: False
+
+elasticsearch_endpoint: '{{ groups.elasticsearch.0 }}'
+elasticsearch_memory: '8192m'
+elasticsearch_cluster_name: 'covid-es'
+elastcsearch_backup_days: 3
+elasticsearch_version: 2.4.6
+elasticsearch_download_sha256: 5f7e4bb792917bb7ffc2a5f612dfec87416d54563f795d6a70637befef4cfc6f.
+redis_maxmemory: 4gb
+default_from_email: echismoh@moh.gov.et
+server_email: echismoh@moh.gov.et
+server_admin_email: echis_server_admin@moh.gov.et
+
+nofile_limit: 65536
+ssh_allow_password: True
+
+backup_blobdb: True
+backup_postgres: plain
+backup_es_s3: False
+backup_couch: True
+postgres_s3: False
+blobdb_s3: False
+couch_s3: False
+
+KSPLICE_ACTIVE: no
+
+shared_drive_enabled: True
+
+etc_hosts_lines:
+  - "{{ groups.proxy.0 }}		{{ SITE_HOST }}"
+
+couchdb2:
+  username: "{{ localsettings_private.COUCH_USERNAME }}"
+  password: "{{ localsettings_private.COUCH_PASSWORD }}"
+
+couchdb_cluster_settings:
+  q: 8
+  r: 2
+  w: 2
+  n: 2
+
+couch_dbs:
+  default:
+    host: "{{ groups.couchdb2_proxy[0] }}"
+    port: "{{ couchdb2_proxy_port }}"
+    name: commcarehq
+    username: "{{ localsettings_private.COUCH_USERNAME }}"
+    password: "{{ localsettings_private.COUCH_PASSWORD }}"
+    is_https: False
+nameservers:
+  - 8.8.8.8
+  - 8.8.4.4
+
+localsettings:
+  ALLOWED_HOSTS:
+    - 172.31.95.249
+    - 172.31.85.158
+    - 172.31.92.77
+    - 172.31.80.228
+  SENTRY_ORGANIZATION_SLUG: 'org slug'
+  SENTRY_PROJECT_SLUG: 'project slug'
+  SENTRY_REPOSITORY: 'fmoh'
+  COMMCARE_HQ_NAME: 'COVID-19 Portal'
+  COMMCARE_NAME: 'covid'
+  COUCH_CACHE_DOCS: True
+  COUCH_CACHE_VIEWS: True
+  DEPLOY_MACHINE_NAME: "{{ ansible_hostname }}"
+  EMAIL_SMTP_HOST: 'smtp.gmail.com'
+  EMAIL_SMTP_PORT: 587
+  EMAIL_USE_TLS: yes
+  ENABLE_SOFT_ASSERT_EMAILS: no
+  IS_DIMAGI_ENVIRONMENT: False
+  ENFORCE_TWO_FACTOR_FOR_SUPERUSERS: False
+  HQ_INSTANCE: 'covid'
+  INACTIVITY_TIMEOUT: 20160
+  REDIS_DB: '0'
+  REDIS_HOST: "{{ groups.redis.0 }}"
+  REDIS_PORT: '6379'
+  REMINDERS_QUEUE_ENABLED: True
+  SMS_QUEUE_ENABLED: True
+  #bug_report_email: echismoh@moh.gov.et
+  STATIC_ROOT:
+  WS4REDIS_CONNECTION_HOST: "{{ groups.redis.0 }}"
+  ENABLE_PRELOGIN_SITE: False
+  ENTERPRISE_MODE: True
+  RESTRICT_DOMAIN_CREATION: True
+  minio_server_datadirs:
+   - /usr/local/share/minio
+  minio_server_cluster_nodes: "{{ ['http://'] | product(groups['minio']) | map('join', '') | product(['/usr/local/share/minio']) | map('join', '') | list }}"
+  #minio_server_cluster_nodes: "{{ groups['minio']|map('string_prefix', '/usr/local/share/minio')|map('string_postfix', 'http://')|list }}"
+  STATIC_TOGGLE_STATES:
+    mobile_ucr_linked_domain:
+      always_enabled:
+        - 'fmoh-echis-staging'
