@@ -30,7 +30,11 @@ setup(
     },
     install_requires=(
         'ansible-vault==1.1.1',
+<<<<<<< HEAD
         'ansible>=2.9.4',
+=======
+        'ansible>=2.8.0',
+>>>>>>> demis/master
         'argparse>=1.4',
         'attrs>=18.1.0',
         'boto3>=1.9.131',
