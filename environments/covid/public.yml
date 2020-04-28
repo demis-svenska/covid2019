@@ -2,6 +2,7 @@ internal_domain_name: moh.gov.et
 
 #localsettings.BLOB_DB_MIGRATING_FROM_FS_TO_S3: True
 s3_blob_db_enabled: yes
+#s3_blob_db_url: "https://s3.amazonaws.com"
 s3_blob_db_url: "http://172.31.92.77:9000"
 s3_blob_db_s3_bucket: 'covid'
 s3_bulk_delete_chunksize: 200
